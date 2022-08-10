@@ -25,11 +25,14 @@ source-repository head
 
 library
   exposed-modules:
-      Lib
       Mcc.Ast
       Mcc.Ast.Binding
       Mcc.Ast.Function
       Mcc.Ast.Type
+      Mcc.Lexer.Foo
+      Mcc.Lexer.Generator
+      Mcc.Lexer.Internal
+      Mcc.Lexer.Token
   other-modules:
       Paths_mcc
   hs-source-dirs:
