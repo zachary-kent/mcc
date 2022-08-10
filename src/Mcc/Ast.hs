@@ -1,10 +1,11 @@
-module Mcc.Ast where
+module Mcc.Ast (Bop, Uop, Expr, Stmt) where
 
 import Data.Char (chr)
+import Data.Ratio (denominator, numerator)
 import Data.Text (Text)
-import Data.Text.Prettyprint.Doc
-import Mcc.Ast.Type ( Type )
+import Mcc.Ast.Type (Type)
 import qualified Mcc.Ast.Type as Type
+import Prettyprinter
 
 -- | Binary operators
 data Bop
@@ -31,6 +32,7 @@ data Uop
   | Not
   deriving (Show, Eq)
 
+-- | An expression in Micro C
 data Expr
   = Int Integer
   | String Text
@@ -50,6 +52,20 @@ data Expr
   | Sizeof Type
   deriving (Show, Eq)
 
+-- | A statement in Micro C
+data Stmt
+  = -- | An expression whose only purpose is its side effects
+    Expr Expr
+  | Block [Stmt]
+  | Return Expr
+  | -- | if (e1) s1 else s2
+    If Expr Stmt Stmt
+  | -- | for (e1; e2; e3) s
+    For Expr Expr Expr Stmt
+  | -- | while (e) s
+    While Expr Stmt
+  deriving (Show, Eq)
+
 instance Num Expr where
   (+) = Binop Add
   (-) = Binop Sub
@@ -58,3 +74,7 @@ instance Num Expr where
   signum = undefined
   abs = undefined
   fromInteger = Int
+
+instance Fractional Expr where
+  (/) = Binop Div
+  fromRational rat = Int (numerator rat) / Int (denominator rat)

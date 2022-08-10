@@ -1,3 +1,14 @@
 module Mcc.Ast.Type (Type) where
 
-data Type = Type deriving (Show, Eq)
+import Data.Text (Text)
+
+-- | The type of an expression in Micro C
+data Type
+  = Pointer Type
+  | Int
+  | Bool
+  | Float
+  | Char
+  | Void
+  | Struct Text
+  deriving (Show, Eq)
