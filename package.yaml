@@ -1,10 +1,10 @@
 name:                mcc
 version:             0.1.0.0
-github:              "githubuser/mcc"
+github:              "zachary0kent/mcc"
 license:             BSD3
-author:              "Author name here"
-maintainer:          "example@example.com"
-copyright:           "2022 Author name here"
+author:              "Zachary Kent"
+maintainer:          "zak33@cornell.edu"
+copyright:           "2022 Zachary Kent"
 
 extra-source-files:
 - README.md
@@ -20,7 +20,22 @@ extra-source-files:
 description:         Please see the README on GitHub at <https://github.com/githubuser/mcc#readme>
 
 dependencies:
-- base >= 4.7 && < 5
+  - base >= 4.7 && < 5
+  - mtl
+  - array
+  - containers
+  - text
+  - string-conversions
+  - directory
+  - process
+  - unix
+  - filepath
+  - bytestring
+  - prettyprinter
+  - pretty-simple
+  - llvm-hs-pure >= 9 && < 10
+  - llvm-hs-pretty >= 0.9 && < 1
+  - attoparsec
 
 library:
   source-dirs: src
@@ -46,3 +61,5 @@ tests:
     - -with-rtsopts=-N
     dependencies:
     - mcc
+
+default-extensions: OverloadedStrings, LambdaCase
