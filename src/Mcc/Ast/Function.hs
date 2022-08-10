@@ -1,8 +1,8 @@
-module Function (Function) where
+module Mcc.Ast.Function (Function) where
 
-import Binding (Binding)
 import Data.Text (Text)
 import Mcc.Ast (Stmt)
+import Mcc.Ast.Binding (Binding)
 import Mcc.Ast.Type (Type)
 
 -- | A function in Micro C
