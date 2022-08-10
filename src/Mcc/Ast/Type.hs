@@ -1,4 +1,4 @@
-module Mcc.Ast.Type (Type) where
+module Mcc.Ast.Type (Type (..)) where
 
 import Data.Text (Text)
 

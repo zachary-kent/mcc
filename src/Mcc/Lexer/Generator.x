@@ -18,7 +18,7 @@ tokens :-
   "//" [^$newline]* $newline ;
   digit+ { Int . readBytestring }
   $digit+ \. $digit* ( [eE] [\+\-]? $digit+ )?  { Float . readBytestring }
-  \"^ [^\"]* /\"                                { String . decode }
+  \" [^\"]* \"                                  { String . readBytestring }
   \'^ [^\'\\] /\'                               { Char . firstChar }
   \'^ \\ $digit+ /\'                            { Char . escapedChar }
   "int"                                         { makeType Type.Int }
@@ -61,4 +61,4 @@ tokens :-
   \.                                            { const Dot }
   "->"                                          { const Arrow }
   "sizeof"                                      { const Sizeof }
-  $alpha [$alpha $digit \_]*                    { Id . encode }
+  $alpha [$alpha $digit \_]*                    { Id . decode }

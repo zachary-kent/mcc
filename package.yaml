@@ -63,3 +63,5 @@ tests:
     - mcc
 
 default-extensions: OverloadedStrings, LambdaCase
+build-tools: 
+- alex

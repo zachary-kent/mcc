@@ -29,7 +29,6 @@ library
       Mcc.Ast.Binding
       Mcc.Ast.Function
       Mcc.Ast.Type
-      Mcc.Lexer.Foo
       Mcc.Lexer.Generator
       Mcc.Lexer.Internal
       Mcc.Lexer.Token
@@ -39,6 +38,8 @@ library
       src
   default-extensions:
       OverloadedStrings, LambdaCase
+  build-tools:
+      alex
   build-depends:
       array
     , attoparsec
@@ -67,6 +68,8 @@ executable mcc-exe
   default-extensions:
       OverloadedStrings, LambdaCase
   ghc-options: -threaded -rtsopts -with-rtsopts=-N
+  build-tools:
+      alex
   build-depends:
       array
     , attoparsec
@@ -97,6 +100,8 @@ test-suite mcc-test
   default-extensions:
       OverloadedStrings, LambdaCase
   ghc-options: -threaded -rtsopts -with-rtsopts=-N
+  build-tools:
+      alex
   build-depends:
       array
     , attoparsec
