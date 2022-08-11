@@ -22,15 +22,15 @@ data Token
   | RParen
   | LBrace
   | RBrace
-  | LBracket
-  | RBracket
+  | LBrack
+  | RBrack
   | For
   | While
   | If
   | Else
   | Add
   | Sub
-  | Mul
+  | Star
   | Div
   | Equal
   | Neq

@@ -38,15 +38,15 @@ tokens :-
   \)                                            { const RParen }
   \{                                            { const LBrace }
   \}                                            { const RBrace }
-  \[                                            { const LBracket }
-  \]                                            { const RBracket }
+  \[                                            { const LBrack }
+  \]                                            { const RBrack }
   "for"                                         { const For }
   "while"                                       { const While }
   "if"                                          { const If }
   "else"                                        { const Else }
   \+                                            { const Add }
   \-                                            { const Sub }
-  \*                                            { const Mul }
+  \*                                            { const Star }
   \/                                            { const Div }
   "=="                                          { const Equal }
   "!="                                          { const Neq }

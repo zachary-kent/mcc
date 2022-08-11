@@ -34,6 +34,7 @@ library
       Mcc.Lexer.Generator
       Mcc.Lexer.Internal
       Mcc.Lexer.Token
+      Mcc.Parser.Generator
   other-modules:
       Paths_mcc
   hs-source-dirs:
@@ -42,6 +43,7 @@ library
       OverloadedStrings, LambdaCase
   build-tools:
       alex
+    , happy
   build-depends:
       array
     , attoparsec
@@ -72,6 +74,7 @@ executable mcc-exe
   ghc-options: -threaded -rtsopts -with-rtsopts=-N
   build-tools:
       alex
+    , happy
   build-depends:
       array
     , attoparsec
@@ -104,6 +107,7 @@ test-suite mcc-test
   ghc-options: -threaded -rtsopts -with-rtsopts=-N
   build-tools:
       alex
+    , happy
   build-depends:
       array
     , attoparsec
