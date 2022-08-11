@@ -62,6 +62,6 @@ tests:
     dependencies:
     - mcc
 
-default-extensions: OverloadedStrings, LambdaCase
+default-extensions: OverloadedStrings, LambdaCase, GADTs
 build-tools: 
 - alex
