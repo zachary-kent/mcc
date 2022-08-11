@@ -5,7 +5,6 @@ import Data.Ratio (denominator, numerator)
 import Data.Text (Text)
 import Mcc.Ast.Type (Type)
 import qualified Mcc.Ast.Type as Type
-import Prettyprinter
 
 -- | Binary operators
 data Bop
@@ -32,14 +31,19 @@ data Uop
   | Not
   deriving (Show, Eq)
 
--- | An expression in Micro C
-data Expr
+-- | Literal expressions
+data Literal
   = Int Integer
   | String Text
   | Char Integer
   | Float Double
   | Bool Bool
   | Null
+  deriving (Show, Eq)
+
+-- | An expression in Micro C
+data Expr
+  = Literal Literal
   | Id Text
   | Binop Bop Expr Expr
   | Unop Uop Expr
@@ -65,16 +69,3 @@ data Stmt
   | -- | while (e) s
     While Expr Stmt
   deriving (Show, Eq)
-
-instance Num Expr where
-  (+) = Binop Add
-  (-) = Binop Sub
-  (*) = Binop Mul
-  negate = Unop Neg
-  signum = undefined
-  abs = undefined
-  fromInteger = Int
-
-instance Fractional Expr where
-  (/) = Binop Div
-  fromRational rat = Int (numerator rat) / Int (denominator rat)

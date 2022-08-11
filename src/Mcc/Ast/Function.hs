@@ -1,4 +1,4 @@
-module Mcc.Ast.Function (Function) where
+module Mcc.Ast.Function (Function (..)) where
 
 import Data.Text (Text)
 import Mcc.Ast (Stmt)

@@ -28,6 +28,8 @@ library
       Mcc.Ast
       Mcc.Ast.Binding
       Mcc.Ast.Function
+      Mcc.Ast.Program
+      Mcc.Ast.Struct
       Mcc.Ast.Type
       Mcc.Lexer.Generator
       Mcc.Lexer.Internal

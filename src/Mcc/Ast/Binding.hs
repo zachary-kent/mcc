@@ -1,4 +1,4 @@
-module Mcc.Ast.Binding (Binding) where
+module Mcc.Ast.Binding (Binding (..)) where
 
 import Data.Text (Text)
 import Mcc.Ast.Type (Type)
