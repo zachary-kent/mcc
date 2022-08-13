@@ -1,7 +1,6 @@
 {
 module Mcc.Parser.Generator where
 
--- import Data.Function
 import Lens.Micro.Platform
 import Mcc.Ast
 import Mcc.Lexer.Token (Token)
