@@ -36,6 +36,7 @@ dependencies:
   - llvm-hs-pure >= 9 && < 10
   - llvm-hs-pretty >= 0.9 && < 1
   - attoparsec
+  - microlens-platform
 
 library:
   source-dirs: src
@@ -62,7 +63,7 @@ tests:
     dependencies:
     - mcc
 
-default-extensions: OverloadedStrings, LambdaCase
+default-extensions: OverloadedStrings, LambdaCase, DuplicateRecordFields, NamedFieldPuns
 build-tools: 
 - alex
 - happy

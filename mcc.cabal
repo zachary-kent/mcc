@@ -26,10 +26,6 @@ source-repository head
 library
   exposed-modules:
       Mcc.Ast
-      Mcc.Ast.Binding
-      Mcc.Ast.Function
-      Mcc.Ast.Program
-      Mcc.Ast.Struct
       Mcc.Ast.Type
       Mcc.Lexer.Generator
       Mcc.Lexer.Internal
@@ -40,7 +36,7 @@ library
   hs-source-dirs:
       src
   default-extensions:
-      OverloadedStrings, LambdaCase
+      OverloadedStrings, LambdaCase, DuplicateRecordFields, NamedFieldPuns
   build-tools:
       alex
     , happy
@@ -54,6 +50,7 @@ library
     , filepath
     , llvm-hs-pretty >=0.9 && <1
     , llvm-hs-pure ==9.*
+    , microlens-platform
     , mtl
     , pretty-simple
     , prettyprinter
@@ -70,7 +67,7 @@ executable mcc-exe
   hs-source-dirs:
       app
   default-extensions:
-      OverloadedStrings, LambdaCase
+      OverloadedStrings, LambdaCase, DuplicateRecordFields, NamedFieldPuns
   ghc-options: -threaded -rtsopts -with-rtsopts=-N
   build-tools:
       alex
@@ -86,6 +83,7 @@ executable mcc-exe
     , llvm-hs-pretty >=0.9 && <1
     , llvm-hs-pure ==9.*
     , mcc
+    , microlens-platform
     , mtl
     , pretty-simple
     , prettyprinter
@@ -103,7 +101,7 @@ test-suite mcc-test
   hs-source-dirs:
       test
   default-extensions:
-      OverloadedStrings, LambdaCase
+      OverloadedStrings, LambdaCase, DuplicateRecordFields, NamedFieldPuns
   ghc-options: -threaded -rtsopts -with-rtsopts=-N
   build-tools:
       alex
@@ -119,6 +117,7 @@ test-suite mcc-test
     , llvm-hs-pretty >=0.9 && <1
     , llvm-hs-pure ==9.*
     , mcc
+    , microlens-platform
     , mtl
     , pretty-simple
     , prettyprinter

@@ -1,7 +1,7 @@
 module Mcc.Lexer.Token (Token (..)) where
 
 import Data.Text (Text)
-import Mcc.Ast.Type (Type)
+import Mcc.Ast.Type (Primitive)
 
 -- | An Micro C token
 data Token
@@ -10,7 +10,7 @@ data Token
   | String Text
   | Char Int
   | Id Text
-  | Type Type
+  | Type Primitive
   | Struct
   | Bool Bool
   | Null
@@ -22,8 +22,6 @@ data Token
   | RParen
   | LBrace
   | RBrace
-  | LBrack
-  | RBrack
   | For
   | While
   | If
@@ -43,7 +41,6 @@ data Token
   | Not
   | BitAnd
   | BitOr
-  | Pow
   | Dot
   | Arrow
   | Sizeof

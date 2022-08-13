@@ -38,8 +38,6 @@ tokens :-
   \)                                            { const RParen }
   \{                                            { const LBrace }
   \}                                            { const RBrace }
-  \[                                            { const LBrack }
-  \]                                            { const RBrack }
   "for"                                         { const For }
   "while"                                       { const While }
   "if"                                          { const If }
@@ -57,7 +55,6 @@ tokens :-
   \!                                            { const Not }
   \&                                            { const BitAnd }
   \|                                            { const BitOr }
-  "**"                                          { const Pow }
   \.                                            { const Dot }
   "->"                                          { const Arrow }
   "sizeof"                                      { const Sizeof }

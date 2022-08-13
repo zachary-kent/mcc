@@ -13,7 +13,7 @@ import Data.Char (ord)
 import Data.Text (Text)
 import qualified Data.Text.Lazy as Text.Lazy
 import Data.Text.Lazy.Encoding (decodeUtf8)
-import Mcc.Ast.Type (Type)
+import Mcc.Ast.Type (Primitive)
 import Mcc.Lexer.Token (Token (..))
 
 -- | Same as 'read', but from lazy 'Text'
@@ -33,7 +33,7 @@ firstChar :: ByteString -> Int
 firstChar bytes = ord $ Text.Lazy.index (decodeUtf8 bytes) 0
 
 -- | Create a type token, given the specified type
-makeType :: Type -> a -> Token
+makeType :: Primitive -> a -> Token
 makeType = const . Type
 
 -- | Create a bool token, given the specified boolean value

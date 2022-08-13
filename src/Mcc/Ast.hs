@@ -1,4 +1,15 @@
-module Mcc.Ast (Bop, Uop, Expr, Stmt) where
+module Mcc.Ast
+  ( Bop (..),
+    Uop (..),
+    Literal (..),
+    Expr (..),
+    Stmt (..),
+    Binding (..),
+    Function (..),
+    Struct (..),
+    Program (..),
+  )
+where
 
 import Data.Char (chr)
 import Data.Ratio (denominator, numerator)
@@ -12,7 +23,6 @@ data Bop
   | Sub
   | Mul
   | Div
-  | Pow
   | Equal
   | Neq
   | Less
@@ -35,7 +45,7 @@ data Uop
 data Literal
   = Int Integer
   | String Text
-  | Char Integer
+  | Char Int
   | Float Double
   | Bool Bool
   | Null
@@ -49,7 +59,7 @@ data Expr
   | Unop Uop Expr
   | Call Text [Expr]
   | Cast Type Expr
-  | Dot Expr Expr
+  | Access Expr Expr
   | Deref Expr
   | Addr Expr
   | Assign Expr Expr
@@ -61,11 +71,55 @@ data Stmt
   = -- | An expression whose only purpose is its side effects
     Expr Expr
   | Block [Stmt]
-  | Return Expr
+  | Return (Maybe Expr)
+  | -- | if (e) s
+    If Expr Stmt
   | -- | if (e1) s1 else s2
-    If Expr Stmt Stmt
+    IfElse Expr Stmt Stmt
   | -- | for (e1; e2; e3) s
-    For Expr Expr Expr Stmt
+    For (Maybe Expr) (Maybe Expr) (Maybe Expr) Stmt
   | -- | while (e) s
     While Expr Stmt
   deriving (Show, Eq)
+
+-- | A binding between an identifier and a type
+data Binding = Binding
+  { -- | The type of the binding
+    typ :: Type,
+    -- | The identifier of the binding
+    id :: Text
+  }
+  deriving (Show, Eq)
+
+-- | A function in Micro C
+data Function = Function
+  { -- | The return type of the function
+    returnType :: Type,
+    -- | The name of the function
+    name :: Text,
+    -- | The parameters to the function, described by a list of
+    --   identifier - type bindings
+    params :: [Binding],
+    -- | Local variables defined having this function's scope
+    locals :: [Binding],
+    body :: [Stmt]
+  }
+  deriving (Show, Eq)
+
+-- | A Micro C struct/record. 'Struct { name, fields = [Binding x1 t1, ...,
+-- Binding xn tn)] }' represents the Micro C struct
+-- 'struct name { t1 x1; ... ; tn xn; }'
+data Struct = Struct
+  { name :: Text,
+    fields :: [Binding]
+  }
+
+-- | A Micro C program
+data Program = Program
+  { -- | The declared structs
+    structs :: [Struct],
+    -- | Global variables
+    globals :: [Binding],
+    -- | Defined functions
+    functions :: [Function]
+  }
